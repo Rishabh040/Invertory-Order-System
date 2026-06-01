@@ -105,7 +105,7 @@ export default function App() {
   });
 
   // Base API configuration (Vite proxy redirects to backend)
-  const API_BASE = '';
+  const API_BASE = 'https://invertory-order-system-1.onrender.com';
 
   // Trigger Toast Notification
   const notify = (message: string, type: 'success' | 'error' = 'success') => {

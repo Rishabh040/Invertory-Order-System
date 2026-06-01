@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   LayoutDashboard, 
   Box, 
@@ -192,21 +192,19 @@ export default function App() {
 
   // Handle Search input changes
   useEffect(() => {
-    if (currentPage === 'products') {
+    if (currentPage !== 'products') return;
       const delayDebounceFn = setTimeout(() => {
         fetchProducts(productSearch);
       }, 300);
       return () => clearTimeout(delayDebounceFn);
-    }
   }, [productSearch]);
 
   useEffect(() => {
-    if (currentPage === 'customers') {
+    if (currentPage !== 'customers') return;
       const delayDebounceFn = setTimeout(() => {
         fetchCustomers(customerSearch);
       }, 300);
       return () => clearTimeout(delayDebounceFn);
-    }
   }, [customerSearch]);
 
 
@@ -716,7 +714,6 @@ export default function App() {
                               <button 
                                 className="btn btn-secondary btn-icon" 
                                 title="Delete Product"
-                                style={{ hoverColor: 'var(--color-danger)' }}
                                 onClick={() => handleDeleteProduct(product.id)}
                               >
                                 <Trash2 size={14} style={{ color: 'var(--color-danger)' }} />
